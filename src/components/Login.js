@@ -1,14 +1,16 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
+import { loginValidator } from '../utils/validate';
 
 function Login() {
 
-
+  const [errorMessage, setErrorMessage] = useState();
   const email = useRef(null);
   const password = useRef(null);
 
 
   const  handleLogin = () => {
-    console.log(email.current.value, password.current.value)
+    // console.log(email.current.value, password.current.value)
+    setErrorMessage(loginValidator(email.current.value, password.current.value))
   };
 
   return (
@@ -18,10 +20,11 @@ function Login() {
 
 
 xx
-    <form action="">
+    <form onSubmit={(e)=> e.defaultPrevented()}>
       email: <input ref={email} type="text" name="email"/>
       Password: <input ref={password} type="password" name="password"/>
       <button onClick={handleLogin} type="button" className="text-white bg-blue-800 hover:bg-blue-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-800 dark:hover:bg-blue-700 dark:focus:ring-blue-700 dark:border-blue-700">SignIn</button>
+    <p className='text-red-700 text-xs w-3/12'>{errorMessage}</p>
     </form>
     </div>
   )
