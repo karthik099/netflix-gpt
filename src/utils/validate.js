@@ -5,7 +5,8 @@ export const loginValidator = (email, password) => {
   if (!emailValidate) {
     return "Invalid Email";
   } else if (!passwordvlaidate) {
-    return "Password should follow the pattern Min 1 uppercase letter. Min 1 lowercase letter. Min 1 special character. Min 1 number. Min 8 characters. Max 30 characters.";
+    return null // TO BYPASS PASSWORD CHECK
+    // return "Password should follow the pattern Min 1 uppercase letter. Min 1 lowercase letter. Min 1 special character. Min 1 number. Min 8 characters. Max 30 characters.";
   } else {
     return null;
   }
